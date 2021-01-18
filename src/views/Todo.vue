@@ -69,12 +69,11 @@ export default {
     const todos = ref([]);
     const userId = localStorage.getItem("id");
 
-    onMounted(() => {
+    onMounted(async () => {
       // get all todos in database
-      let res = axios.get(
+      let res = await axios.get(
         `https://todo-web-api.herokuapp.com/todo?userId=${userId}`
       );
-      console.log(res);
       todos.value = res.data;
     });
 
