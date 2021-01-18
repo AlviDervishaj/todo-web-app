@@ -97,7 +97,7 @@ export default {
     // toggle finished state
     async function toggleFinish(todo) {
       // update in database
-      await axios.put("ttps://todo-web-api.herokuapp.com/todo", {
+      await axios.put("https://todo-web-api.herokuapp.com/todo", {
         id: todo._id,
         finished: todo.finished,
         userId: userId
@@ -107,7 +107,7 @@ export default {
     // remove todo based on it's index
     async function removeTodo(todoId, index) {
       // remove todo from mongo
-      await axios.delete("ttps://todo-web-api.herokuapp.com/todo", {
+      await axios.delete("https://todo-web-api.herokuapp.com/todo", {
         headers: {},
         data: {
           id: todoId,
@@ -118,7 +118,7 @@ export default {
       todos.value.splice(index, 1);
     }
     async function removeAllTodos() {
-      await axios.delete("ttps://todo-web-api.herokuapp.com/todo", {
+      await axios.delete("https://todo-web-api.herokuapp.com/todo", {
         headers: {},
         data: {
           method: "all",
