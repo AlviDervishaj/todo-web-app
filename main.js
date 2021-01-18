@@ -7,10 +7,14 @@ app = express();
 app.use(serveStatic(__dirname + "/dist"));
 
 app.use(cors());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
 app.use(bodyParser.json());
 
-app.get(/.*/,(req,res)=>res.sendFile(path.resolve(__dirname, 'dist/index.html')))
+app.get(/.*/, (req, res) => {
+    res.sendFile(__dirname + "/dist/index.html")
+  });
 
 var port = process.env.PORT || 5000;
 
