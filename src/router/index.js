@@ -4,10 +4,10 @@ import {
     createRouter
 } from "vue-router";
 // Lazy load 
-const Home = import("../views/Home.vue");
-const Login = import("../views/Login.vue");
-const Signup = import("../views/Signup.vue");
-const Todo = import("../views/Todo.vue");
+import Home from"../views/Home.vue";
+import Login from"../views/Login.vue";
+import Signup from"../views/Signup.vue";
+import Todo from"../views/Todo.vue";
 
 const routes = [{
         path: "/",
