@@ -67,11 +67,11 @@ export default {
     const newTodo = ref("");
     // Reactive array
     const todos = ref([]);
-    const userId = sessionStorage.getItem("id");
+    const userId = localStorage.getItem("id");
 
-    onMounted(async () => {
+    onMounted(() => {
       // get all todos in database
-      let res = await axios.get(
+      let res = axios.get(
         `https://todo-web-api.herokuapp.com/todo?userId=${userId}`
       );
       console.log(res);

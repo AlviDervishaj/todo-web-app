@@ -14,10 +14,10 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.660521f3b8df9a6266cf46da46347eb9.js"
+  "/precache-manifest.000e18382af5453e0dd770c5ef43f2cc.js"
 );
 
-workbox.core.setCacheNameDetails({prefix: "todo-app"});
+workbox.core.setCacheNameDetails({prefix: "Todo"});
 
 self.addEventListener('message', (event) => {
   if (event.data && event.data.type === 'SKIP_WAITING') {
