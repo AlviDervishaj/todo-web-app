@@ -17,7 +17,7 @@ importScripts(
   "/precache-manifest.000e18382af5453e0dd770c5ef43f2cc.js"
 );
 
-workbox.core.setCacheNameDetails({prefix: "Todo"});
+workbox.core.setCacheNameDetails({prefix: "todo-app"});
 
 self.addEventListener('message', (event) => {
   if (event.data && event.data.type === 'SKIP_WAITING') {
