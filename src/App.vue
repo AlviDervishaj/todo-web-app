@@ -18,6 +18,7 @@ export default {
 <style lang="scss">
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 #view {
   text-align: center;
   width: 100%;
@@ -31,7 +32,7 @@ body {
   color: #f1faee;
   width: 100vw;
   height: 100vh;
-  *{
+  * {
     max-width: 100%;
   }
 }

@@ -4,6 +4,9 @@
       <li class="link home">
         <router-link class="link-text" to="/">Home</router-link>
       </li>
+      <li class="link about">
+        <router-link class="link-text" to="/about">About</router-link>
+      </li>
       <li class="link todos">
         <router-link class="link-text" to="/todos">Todos</router-link>
       </li>
