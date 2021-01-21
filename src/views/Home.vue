@@ -7,10 +7,11 @@
 
 <script>
 import { onMounted } from "vue";
+import axios from "axios";
 export default {
   name: "Home",
   setup() {
-    onMounted(() => {
+    onMounted(async () => {
       // check if user is logged in
       if (localStorage.getItem("username") && localStorage.getItem("id")) {
         const user = {
@@ -22,7 +23,9 @@ export default {
         const content = document.querySelector("p.content");
         content.innerText =
           "Click 'Todos' in the navigation bar and start creating your todos :)";
-        // Also display a logout button in navbar
+        // Make a request to API
+        // to change it's state from Sleeping to Up
+        await axios.get("https://todo-web-api.herokuapp.com/");
       }
     });
     return {};
