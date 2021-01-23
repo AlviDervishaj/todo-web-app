@@ -37,7 +37,6 @@ export default {
 #home {
   width: 100%;
   height: 100%;
-  margin-top: 2rem;
   .heading {
     font-family: "Montserrat", sans-serif;
     letter-spacing: 0.2rem;

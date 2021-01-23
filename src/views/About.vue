@@ -95,6 +95,7 @@ export default {
   align-items: center;
   font-size: 1.3rem;
   font-family: "Roboto", sans-serif;
+  float: right;
   .heading {
     font-family: "Montserrat", sans-serif;
     letter-spacing: 0.2rem;
@@ -173,6 +174,11 @@ export default {
         }
       }
     }
+  }
+}
+@media only screen and (max-width: 920px) {
+  #about {
+    width: 77%;
   }
 }
 </style>

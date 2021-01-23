@@ -1,7 +1,9 @@
 <template>
   <div id="view">
     <Navigation />
-    <router-view></router-view>
+    <div id="route-view">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
@@ -21,12 +23,16 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 #view {
   text-align: center;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
+  #route-view {
+    z-index: 1;
+  }
 }
 body {
   background-color: #1d3557;
   margin: 0;
+  padding: 0;
   overflow-x: hidden;
   overflow-y: auto;
   color: #f1faee;

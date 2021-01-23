@@ -1,7 +1,7 @@
 <template>
   <div id="todo-app">
     <div id="todo-form">
-      <h1 class="heading">Todos</h1>
+      <h1 class="heading">Todo Galaxy</h1>
       <input
         type="text"
         placeholder="Add new todo"

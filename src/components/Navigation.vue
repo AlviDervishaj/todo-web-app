@@ -1,24 +1,46 @@
 <template>
-  <nav id="navigation">
+  <nav id="navigation" class="navigationx2">
     <ul class="links">
+      <li class="link li-bars">
+        <router-link class="link-item" to="#" @click="openMenu">
+          <i class="fas fa-bars bars icon"></i>
+          <span class="link-text">Navbar</span>
+        </router-link>
+      </li>
       <li class="link home">
-        <router-link class="link-text" to="/">Home</router-link>
+        <router-link class="link-item" to="/"
+          ><i class="fas fa-home icon"></i>
+          <span class="link-text">Home</span></router-link
+        >
       </li>
       <li class="link about">
-        <router-link class="link-text" to="/about">About</router-link>
+        <router-link class="link-item" to="/about"
+          ><i class="fas fa-info-circle icon"></i>
+          <span class="link-text">About</span></router-link
+        >
       </li>
       <li class="link todos">
-        <router-link class="link-text" to="/todos">Todos</router-link>
+        <router-link class="link-item" to="/todos"
+          ><i class="fas fa-list-ol icon"></i>
+          <span class="link-text">Todos</span>
+        </router-link>
       </li>
       <li class="link login">
-        <router-link class="link-text" to="/login">Login</router-link>
+        <router-link class="link-item" to="/login"
+          ><i class="fas fa-sign-in-alt icon"></i>
+          <span class="link-text">Login</span>
+        </router-link>
       </li>
       <li class="link signup">
-        <router-link class="link-text" to="/signup">Signup</router-link>
+        <router-link class="link-item" to="/signup"
+          ><i class="fas fa-user-plus icon"></i>
+          <span class="link-text">Signup</span>
+        </router-link>
       </li>
       <li class="link logout">
-        <router-link class="link-text" @click="logoutUser" to="#">
-          Logout
+        <router-link class="link-item" @click="logoutUser" to="#">
+          <i class="fas fa-sign-out-alt icon"></i>
+          <span class="link-text">Logout</span>
         </router-link>
       </li>
     </ul>
@@ -56,8 +78,18 @@ export default {
       // Redirect user to home page
       window.location = "/";
     }
+
+    function openMenu() {
+      var navbar = document.querySelector("nav#navigation");
+      if (navbar.className === "navigationx2") {
+        navbar.className += " responsive";
+      } else {
+        navbar.className = "navigationx2";
+      }
+    }
     return {
-      logoutUser
+      logoutUser,
+      openMenu
     };
   }
 };
@@ -76,27 +108,151 @@ export default {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    padding: 0;
     .link {
       width: fit-content;
       height: fit-content;
       list-style-type: none;
-      a,
-      .link-text {
-        font-size: 1.3rem;
-        text-decoration: none;
+      text-align: center;
+      .link-item {
+        .icon {
+          display: none;
+        }
+        height: 2rem;
         color: #4cc9f0;
-        font-family: "Roboto", sans-serif;
-        border-bottom: 2px solid transparent;
-        transition: all 0.3s ease;
+        text-decoration: none;
         padding: 0.5rem;
-        padding-top: 0;
+        transition: all 0.3s ease;
         letter-spacing: 0.2rem;
-        &:hover {
-          border-bottom-color: #4cc9f0;
+        border-bottom: 2px solid transparent;
+        .link-text {
+          text-decoration: none;
+          color: inherit;
+          font-family: "Montserrat", sans-serif;
+          font-size: 1.2rem;
         }
       }
-      &.logout {
-        display: block;
+    }
+  }
+}
+/*Small Screens */
+@media only screen and (max-width: 920px) {
+  :root {
+    font-size: 14px;
+  }
+  #navigation {
+    position: relative;
+    width: fit-content;
+    height: fit-content;
+    transition: width 200ms ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 200ms ease;
+    float: left;
+    &.responsive {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 12rem;
+      height: 100%;
+      padding-bottom: 10rem;
+      margin: 0;
+      background-color: #13293d;
+      .links {
+        .link {
+          &.home,
+          &.about,
+          &.todos,
+          &.login,
+          &.signup,
+          &.logout {
+            display: block;
+          }
+          &:last-child {
+            margin-bottom: 3rem;
+          }
+          &.li-bars {
+            display: inline;
+            margin-bottom: auto;
+          }
+
+          .link-item {
+            .icon {
+              margin-right: 2rem;
+            }
+            .link-text {
+              display: block;
+              color: #fff;
+            }
+          }
+        }
+      }
+    }
+    .links {
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .link {
+        width: 100%;
+        margin: 1rem 0;
+        &.home,
+        &.about,
+        &.todos,
+        &.login,
+        &.signup,
+        &.logout {
+          display: none;
+        }
+        .link-item {
+          display: flex;
+          align-items: flex-end;
+          filter: grayscale(100%) opacity(0.7);
+          transition: filter 200ms ease;
+          .icon {
+            display: inline;
+            font-size: 2rem;
+            margin: 0 0.5rem;
+            color: #df49a6;
+          }
+          .link-text {
+            display: none;
+          }
+          &:hover {
+            filter: grayscale(0%) opacity(1);
+          }
+        }
+        &.logout {
+          margin-top: auto;
+        }
+      }
+    }
+  }
+}
+/*Large Screens */
+@media only screen and (min-width: 920px) {
+  :root {
+    font-size: 16px;
+  }
+  #navigation {
+    .links {
+      .link {
+        &.li-bars {
+          display: none;
+        }
+        .link-item {
+          &:hover {
+            border-bottom-color: #4cc9f0;
+          }
+        }
+        &.logout {
+          display: block;
+        }
+        &.li-bars {
+          display: none;
+        }
       }
     }
   }
