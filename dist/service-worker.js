@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.5edeb40482b4056f79818baf7e147734.js"
+  "/precache-manifest.86d1e50634e3b7723a3416e1f43d470b.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "todo-app"});
