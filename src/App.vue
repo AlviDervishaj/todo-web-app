@@ -1,19 +1,33 @@
 <template>
   <div id="view">
     <Navigation />
-    <div id="route-view">
+    <div id="route-view" @click="closeMenu">
       <router-view></router-view>
     </div>
   </div>
 </template>
 
 <script>
+/* eslint-disable */
 import Navigation from "./components/Navigation.vue";
 export default {
   name: "App",
+  setup() {
+    function closeMenu() {
+      // select navbar
+      var navbar = document.querySelector("nav#navigation");
+      // remove responsive class to close it
+      if (navbar.classList.length > 1) {
+        navbar.className = "navigationx2";
+      }
+    }
+    return {
+      closeMenu,
+    };
+  },
   components: {
-    Navigation
-  }
+    Navigation,
+  },
 };
 </script>
 
@@ -21,12 +35,23 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+#app {
+  width: 100%;
+  height: 100%;
+}
 #view {
   text-align: center;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
   #route-view {
+    width: 100%;
+    height: 100%;
     z-index: 1;
+    margin: auto;
+    overflow-y: hidden;
+    overflow-x: hidden;
   }
 }
 body {
@@ -38,8 +63,12 @@ body {
   color: #f1faee;
   width: 100vw;
   height: 100vh;
-  * {
-    max-width: 100%;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+@media only screen and (max-width: 920px) {
+  :root {
+    font-size: 13px;
   }
 }
 </style>

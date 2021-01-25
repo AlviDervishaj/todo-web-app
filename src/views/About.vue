@@ -35,7 +35,7 @@
         <h3 class="greetings">
           Hey, it's me ... Alvi ! 😃
         </h3>
-        <p class="user-intro">
+        <p class="introduction">
           I am the developer and maintainer of Todo Galaxy. I am always working
           on improving the website based on your feedback. I'm already working
           on new cool stuff like <em class="special-chars">*!?d</em> ,
@@ -43,38 +43,44 @@
           <em class="special-chars">*!@@?</em> . So stay tuned and enjoy Todo
           Galaxy!
         </p>
-        <p>
-          If you have any questions, please don't hesitate to contact me on :
-        </p>
-        <div class="action-buttons">
-          <a
-            href="https://www.instagram.com/alvidervishaj/"
-            target="_blank"
-            class="instagram"
-          >
-            <i class="fab fa-instagram icon"></i>
-            Instagram
-          </a>
-          <a
-            href="mailto:alvidervishaj9@gmail.com"
-            target="_blank"
-            class="email"
-          >
-            <i class="far fa-envelope icon"></i>
-            Email
-          </a>
-          <a href="https://twitter.com/WhyAlvi" target="_blank" class="twitter">
-            <i class="fab fa-twitter icon"></i>
-            Twitter
-          </a>
-          <a
-            href="https://github.com/AlviDervishaj"
-            target="_blank"
-            class="github"
-          >
-            <i class="fab fa-github icon"></i>
-            GitHub
-          </a>
+        <div class="outro">
+          <p class="contact-info">
+            If you have any questions, please don't hesitate to contact me on :
+          </p>
+          <div class="action-buttons">
+            <a
+              href="https://www.instagram.com/alvidervishaj/"
+              target="_blank"
+              class="instagram"
+            >
+              <i class="fab fa-instagram icon"></i>
+              Instagram
+            </a>
+            <a
+              href="mailto:alvidervishaj9@gmail.com"
+              target="_blank"
+              class="email"
+            >
+              <i class="far fa-envelope icon"></i>
+              Email
+            </a>
+            <a
+              href="https://twitter.com/WhyAlvi"
+              target="_blank"
+              class="twitter"
+            >
+              <i class="fab fa-twitter icon"></i>
+              Twitter
+            </a>
+            <a
+              href="https://github.com/AlviDervishaj"
+              target="_blank"
+              class="github"
+            >
+              <i class="fab fa-github icon"></i>
+              GitHub
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -83,13 +89,13 @@
 
 <script>
 export default {
-  name: "About"
+  name: "About",
 };
 </script>
 <style lang="scss" scoped>
 #about {
   width: 100%;
-  height: 100%;
+  height: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -118,7 +124,8 @@ export default {
       text-align: left;
       .text {
         font-family: "Roboto", sans-serif;
-        .link {
+        .link,
+        .link:visited {
           color: #a8dadc;
           transition: all 0.3s ease;
           text-decoration: underline 1px solid transparent;
@@ -140,7 +147,7 @@ export default {
         font-family: "Open Sans", sans-serif;
         font-size: 1.6rem;
       }
-      .user-intro {
+      .introduction {
         text-align: left;
         .special-chars {
           color: #06d6a0;
@@ -149,7 +156,7 @@ export default {
       .action-buttons {
         display: flex;
         width: 100%;
-        justify-content: space-evenly;
+        justify-content: space-between;
         flex-direction: row;
         align-items: center;
         margin: auto;
@@ -162,14 +169,11 @@ export default {
           border: 1px solid transparent;
           font-size: 1.5rem;
           text-decoration: none;
-          color: #a8dadc;
+          color: #ffbe0b;
           transition: all 0.3s ease;
           svg.icon {
             font-size: 2rem;
             margin-right: 0.5rem;
-          }
-          &:hover {
-            color: #e0fbfc;
           }
         }
       }
@@ -178,7 +182,88 @@ export default {
 }
 @media only screen and (max-width: 920px) {
   #about {
-    width: 77%;
+    width: 100%;
+    .heading {
+      font-size: 1.7rem;
+    }
+    .content {
+      .info {
+        width: 90%;
+        float: left;
+        margin: auto;
+        margin-right: 2rem;
+        .text {
+          font-size: 1.2rem;
+          line-height: 2rem;
+          .link,
+          .link:visited,
+          .link:link,
+          .link:any-link,
+          .link:active {
+            text-decoration: none;
+            color: #ffe66d;
+          }
+        }
+      }
+      .contact {
+        width: 90%;
+        justify-content: flex-start;
+        align-content: center;
+        .greetings {
+          font-size: 1.3rem;
+        }
+        .introduction {
+          font-size: 1.2rem;
+          line-height: 2rem;
+          text-align: left;
+        }
+        .outro {
+          .contact-info {
+            font-size: 1.2rem;
+            line-height: 2rem;
+            font-style: italic;
+          }
+          .action-buttons {
+            .github {
+              color: #fff;
+            }
+            .email {
+              color: #db4437;
+            }
+            .instagram {
+              color: #c13584;
+            }
+            .twitter {
+              color: #1da1f2;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media only screen and (min-width: 920px) {
+  #about {
+    .content {
+      .contact {
+        .outro {
+          .action-buttons {
+            .github:hover {
+              color: #fff;
+            }
+            .twitter:hover {
+              color: #1da1f2;
+            }
+            .instagram:hover {
+              color: #c13584;
+            }
+            .email:hover {
+              color: #db4437;
+            }
+          }
+        }
+      }
+    }
   }
 }
 </style>

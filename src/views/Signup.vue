@@ -59,7 +59,7 @@ export default {
         let user = {
           username: username.value,
           password: sha256(password.value),
-          email: email.value
+          email: email.value,
         };
         let res = await axios.post(
           "https://todo-web-api.herokuapp.com/user",
@@ -74,9 +74,9 @@ export default {
       username,
       password,
       email,
-      signupUser
+      signupUser,
     };
-  }
+  },
 };
 </script>
 
@@ -86,6 +86,7 @@ export default {
   height: 100%;
   display: inline-block;
   margin-top: 1.5rem;
+  overflow: hidden;
   .heading {
     color: #fca311;
     letter-spacing: 0.2rem;
@@ -94,10 +95,12 @@ export default {
   }
   #signup-form {
     width: 100%;
-    height: 100%;
+    height: 70%;
     margin-top: 3rem;
-    display: grid;
-    gap: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
     .input-component {
       display: flex;
       justify-content: center;
@@ -145,6 +148,29 @@ export default {
       cursor: pointer;
       &:not(:hover) {
         background-color: #2a9d8f;
+      }
+    }
+  }
+}
+@media only screen and (max-width: 920px) {
+  #signup {
+    margin-top: 0;
+    .heading {
+      font-size: 1.7rem;
+    }
+    #signup-form {
+      .input-component {
+        width: 70%;
+        .icons {
+          flex: 1;
+        }
+        .input {
+          flex: 7;
+        }
+      }
+      .button {
+        width: 50%;
+        border-radius: 1rem;
       }
     }
   }

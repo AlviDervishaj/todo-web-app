@@ -66,9 +66,9 @@ export default {
     return {
       username,
       password,
-      loginUser
+      loginUser,
     };
-  }
+  },
 };
 </script>
 
@@ -87,10 +87,12 @@ export default {
   }
   #login-form {
     width: 100%;
-    height: 100%;
-    margin: 3rem auto;
-    display: grid;
-    gap: 4rem;
+    height: 50%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: space-evenly;
     .input-component {
       display: flex;
       justify-content: center;
@@ -138,6 +140,38 @@ export default {
       cursor: pointer;
       &:not(:hover) {
         background-color: #2a9d8f;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 920px) {
+  #login {
+    margin-top: 0;
+    display: inline-block;
+    .heading {
+      font-size: 1.7rem;
+      padding: 0;
+      text-align: center;
+      margin-left: 2rem;
+    }
+    #login-form {
+      margin-top: 4rem;
+      height: 50%;
+      .input-component {
+        width: 70%;
+        .icons {
+          flex: 1;
+        }
+        .input {
+          flex: 6;
+        }
+      }
+      .button {
+        width: 50%;
+        border-radius: 1rem;
+        padding: 1rem;
+        font-size: 1.4rem;
       }
     }
   }

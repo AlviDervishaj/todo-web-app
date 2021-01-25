@@ -2,37 +2,37 @@
   <nav id="navigation" class="navigationx2">
     <ul class="links">
       <li class="link li-bars">
-        <router-link class="link-item" to="#" @click="openMenu">
+        <router-link class="link-item" to="#" @click="toggleMenu">
           <i class="fas fa-bars bars icon"></i>
           <span class="link-text">Navbar</span>
         </router-link>
       </li>
       <li class="link home">
-        <router-link class="link-item" to="/"
+        <router-link class="link-item" @click="closeMenu" to="/"
           ><i class="fas fa-home icon"></i>
           <span class="link-text">Home</span></router-link
         >
       </li>
       <li class="link about">
-        <router-link class="link-item" to="/about"
+        <router-link class="link-item" @click="closeMenu" to="/about"
           ><i class="fas fa-info-circle icon"></i>
           <span class="link-text">About</span></router-link
         >
       </li>
       <li class="link todos">
-        <router-link class="link-item" to="/todos"
+        <router-link class="link-item" @click="closeMenu" to="/todos"
           ><i class="fas fa-list-ol icon"></i>
           <span class="link-text">Todos</span>
         </router-link>
       </li>
       <li class="link login">
-        <router-link class="link-item" to="/login"
+        <router-link class="link-item" @click="closeMenu" to="/login"
           ><i class="fas fa-sign-in-alt icon"></i>
           <span class="link-text">Login</span>
         </router-link>
       </li>
       <li class="link signup">
-        <router-link class="link-item" to="/signup"
+        <router-link class="link-item" @click="closeMenu" to="/signup"
           ><i class="fas fa-user-plus icon"></i>
           <span class="link-text">Signup</span>
         </router-link>
@@ -48,6 +48,7 @@
 </template>
 
 <script>
+/* eslint-disable */
 import { onMounted } from "vue";
 export default {
   name: "Login",
@@ -77,9 +78,10 @@ export default {
       localStorage.removeItem("id");
       // Redirect user to home page
       window.location = "/";
+      closeMenu;
     }
-
-    function openMenu() {
+    // Toggle Navbar when Bars Icon is clicked
+    function toggleMenu() {
       var navbar = document.querySelector("nav#navigation");
       if (navbar.className === "navigationx2") {
         navbar.className += " responsive";
@@ -87,11 +89,19 @@ export default {
         navbar.className = "navigationx2";
       }
     }
+    // Close navbar when user clicks on links ???? or out of navbar ????
+    function closeMenu() {
+      // select navbar
+      var navbar = document.querySelector("nav#navigation");
+      // remove responsive class
+      navbar.className = "navigationx2";
+    }
     return {
       logoutUser,
-      openMenu
+      toggleMenu,
+      closeMenu,
     };
-  }
+  },
 };
 </script>
 
@@ -141,22 +151,23 @@ export default {
     font-size: 14px;
   }
   #navigation {
-    position: relative;
+    position: absolute;
+    top: 1.7rem;
+    left: 0;
     width: fit-content;
     height: fit-content;
-    transition: width 200ms ease;
     display: flex;
     flex-direction: column;
     align-items: center;
     transition: all 200ms ease;
     float: left;
     &.responsive {
-      position: fixed;
+      position: absolute;
       left: 0;
       top: 0;
+      padding-bottom: 10rem;
       width: 12rem;
       height: 100%;
-      padding-bottom: 10rem;
       margin: 0;
       background-color: #13293d;
       .links {
@@ -209,13 +220,12 @@ export default {
         .link-item {
           display: flex;
           align-items: flex-end;
-          filter: grayscale(100%) opacity(0.7);
           transition: filter 200ms ease;
           .icon {
             display: inline;
             font-size: 2rem;
             margin: 0 0.5rem;
-            color: #df49a6;
+            color: #9d4edd;
           }
           .link-text {
             display: none;
@@ -226,6 +236,9 @@ export default {
         }
         &.logout {
           margin-top: auto;
+        }
+        &.li-bars {
+          margin-bottom: auto;
         }
       }
     }

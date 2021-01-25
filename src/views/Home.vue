@@ -16,7 +16,7 @@ export default {
       if (localStorage.getItem("username") && localStorage.getItem("id")) {
         const user = {
           username: localStorage.getItem("username"),
-          id: localStorage.getItem("id")
+          id: localStorage.getItem("id"),
         };
         const heading = document.querySelector("h1.heading");
         heading.innerText = `Welcome ${user.username} 🥳`;
@@ -29,7 +29,7 @@ export default {
       }
     });
     return {};
-  }
+  },
 };
 </script>
 
@@ -48,6 +48,20 @@ export default {
     word-spacing: 0.15rem;
     font-size: 1.5rem;
     font-family: "Roboto", sans-serif;
+  }
+}
+@media only screen and (max-width: 920px) {
+  #home {
+    margin-left: 2rem;
+    .heading {
+      font-size: 1.7rem;
+    }
+    .content {
+      letter-spacing: 0.2rem;
+      line-height: 2rem;
+      width: 95%;
+      text-align: center;
+    }
   }
 }
 </style>
