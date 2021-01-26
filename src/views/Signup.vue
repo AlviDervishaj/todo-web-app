@@ -95,7 +95,7 @@ export default {
   }
   #signup-form {
     width: 100%;
-    height: 70%;
+    height: 60%;
     margin-top: 3rem;
     display: flex;
     flex-direction: column;

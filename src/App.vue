@@ -8,11 +8,18 @@
 </template>
 
 <script>
+import { onMounted } from "vue";
+import axios from "axios";
 /* eslint-disable */
 import Navigation from "./components/Navigation.vue";
 export default {
   name: "App",
   setup() {
+    // make a call to API to change it's state from sleeping to up
+    onMounted(async () => {
+      let res = await axios.get(`https://todo-web-api.herokuapp.com/`);
+      console.log(res);
+    });
     function closeMenu() {
       // select navbar
       var navbar = document.querySelector("nav#navigation");
@@ -50,16 +57,15 @@ export default {
     height: 100%;
     z-index: 1;
     margin: auto;
+    margin-top: 2rem;
     overflow-y: hidden;
     overflow-x: hidden;
   }
 }
 body {
-  background-color: #1d3557;
+  background-color: #1b4965;
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
-  overflow-y: auto;
   color: #f1faee;
   width: 100vw;
   height: 100vh;
@@ -69,6 +75,14 @@ body {
 @media only screen and (max-width: 920px) {
   :root {
     font-size: 13px;
+  }
+  body {
+    background-color: #1d3557;
+  }
+  #view {
+    #route-view {
+      margin-top: 5rem;
+    }
   }
 }
 </style>

@@ -152,8 +152,8 @@ export default {
   }
   #navigation {
     position: absolute;
-    top: 1.7rem;
     left: 0;
+    top: 0;
     width: fit-content;
     height: fit-content;
     display: flex;
@@ -162,7 +162,7 @@ export default {
     transition: all 200ms ease;
     float: left;
     &.responsive {
-      position: absolute;
+      position: fixed;
       left: 0;
       top: 0;
       padding-bottom: 10rem;

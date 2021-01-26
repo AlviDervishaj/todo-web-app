@@ -9,7 +9,7 @@
         id="todo"
         class="todo"
         v-model="newTodo"
-        maxlength="60"
+        maxlength="30"
       />
       <div class="actions">
         <button
@@ -41,14 +41,14 @@
             @click="() => toggleFinish(todo)"
             name="mad-button"
           >
-            <h2>Toggle Done</h2>
+            Toggle Done
           </button>
           <button
             class="remove"
             @click="() => removeTodo(todo._id, index)"
             name="remove-button"
           >
-            <h2>Remove Todo</h2>
+            Remove Todo
           </button>
         </div>
       </li>
@@ -81,7 +81,7 @@ export default {
       let todo = {
         content: newTodo.value,
         finished: false,
-        userId: userId
+        userId: userId,
       };
       let res = await axios.post(
         "https://todo-web-api.herokuapp.com/todo",
@@ -100,7 +100,7 @@ export default {
       await axios.put("https://todo-web-api.herokuapp.com/todo", {
         id: todo._id,
         finished: todo.finished,
-        userId: userId
+        userId: userId,
       });
       todo.finished = !todo.finished;
     }
@@ -112,8 +112,8 @@ export default {
         data: {
           id: todoId,
           method: "one",
-          userId: userId
-        }
+          userId: userId,
+        },
       });
       todos.value.splice(index, 1);
     }
@@ -122,8 +122,8 @@ export default {
         headers: {},
         data: {
           method: "all",
-          userId: userId
-        }
+          userId: userId,
+        },
       });
       todos.value = [];
     }
@@ -134,9 +134,9 @@ export default {
       addNewTodo,
       toggleFinish,
       removeTodo,
-      removeAllTodos
+      removeAllTodos,
     };
-  }
+  },
 };
 </script>
 
@@ -144,10 +144,10 @@ export default {
 #todo-app {
   width: 100%;
   height: 100%;
-  margin: 0.7rem auto;
+  margin: auto;
   #todo-form {
     width: 100%;
-    height: 100%;
+    height: 30%;
     display: grid;
     gap: 1rem;
     .heading {
@@ -173,7 +173,7 @@ export default {
     }
     .actions {
       width: 50%;
-      height: 100%;
+      height: fit-content;
       display: flex;
       justify-content: space-evenly;
       margin: auto;
@@ -190,18 +190,9 @@ export default {
         cursor: pointer;
         &.add {
           background-color: #81b29a;
-          &:hover {
-            background-color: #06d6a0;
-          }
         }
         &.remove {
           background-color: #e56b6f;
-          &:hover {
-            background-color: #da1e37;
-          }
-        }
-        &:hover {
-          flex: 1.5;
         }
       }
     }
@@ -221,42 +212,153 @@ export default {
         font-size: 1.5rem;
         font-family: "Roboto", "sans-serif";
         float: left;
-      }
-      .content.done {
-        text-decoration: line-through #e63946 2px;
-      }
-    }
-    .action-buttons {
-      width: 50%;
-      height: fit-content;
-      display: flex;
-      justify-content: space-around;
-      .mad {
-        width: 50%;
-        margin: 0.5rem;
-        border: 1px solid transparent;
-        border-radius: 1rem;
-        background-color: #81b29a;
-        color: #000;
-        cursor: pointer;
-        outline: none;
-        transition: all 0.3s ease;
-        &:hover {
-          background-color: #06d6a0;
+        &.done {
+          text-decoration: line-through #e63946 2px;
         }
       }
-      .remove {
+      .action-buttons {
         width: 50%;
-        margin: 0.5rem;
-        border: 1px solid transparent;
-        border-radius: 1rem;
-        background-color: #b56576;
-        color: #000;
-        cursor: pointer;
-        outline: none;
-        transition: all 0.3s ease;
-        &:hover {
-          background-color: #da1e37;
+        height: fit-content;
+        display: flex;
+        justify-content: space-around;
+        .mad {
+          width: 50%;
+          margin: 1rem;
+          padding: 1rem;
+          font-size: 1.3rem;
+          border: 1px solid transparent;
+          border-radius: 1rem;
+          background-color: #81b29a;
+          color: #000;
+          cursor: pointer;
+          outline: none;
+          transition: all 0.3s ease;
+        }
+        .remove {
+          width: 50%;
+          margin: 1rem;
+          padding: 1rem;
+          font-size: 1.3rem;
+          border: 1px solid transparent;
+          border-radius: 1rem;
+          background-color: #b56576;
+          color: #000;
+          cursor: pointer;
+          outline: none;
+          transition: all 0.3s ease;
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 920px) {
+  :root {
+    font-size: 12px;
+  }
+  #todo-app {
+    #todo-form {
+      height: 20%;
+      .heading {
+        font-size: 1.7rem;
+      }
+      .todo {
+        width: 75%;
+      }
+      .actions {
+        width: 80%;
+        .button {
+          &.add {
+            background-color: #02c39a;
+            color: #fff;
+          }
+          &.remove {
+            background-color: #ff0a54;
+            color: #fff;
+          }
+        }
+      }
+    }
+    .todos {
+      width: 100%;
+      gap: 0.3rem;
+      margin-top: 2rem;
+      padding: 0;
+      word-break: break-all;
+      .todo {
+        width: 95%;
+        margin: auto;
+        word-break: break-all;
+        .content {
+          flex: 1;
+          font-size: 1.2rem;
+          text-align: left;
+          &.done {
+            text-decoration: line-through #e63947b2 1.5px;
+          }
+        }
+        .action-buttons {
+          word-break: break-word;
+          flex: 1;
+          margin-left: 1rem;
+          .mad {
+            width: 45%;
+            height: 3rem;
+            margin: 0;
+            padding: 0rem;
+            font-size: 1rem;
+            font-style: normal;
+          }
+          .remove {
+            width: 45%;
+            height: 3rem;
+            margin: 0;
+            padding: 0;
+            font-size: 1rem;
+            font-style: normal;
+          }
+        }
+      }
+    }
+  }
+}
+@media only screen and (min-width: 920px) {
+  #todo-app {
+    #todo-form {
+      .heading {
+      }
+      .todo {
+      }
+      .actions {
+        .button {
+          &.add {
+            &:hover {
+              background-color: #06d6a0;
+            }
+          }
+          &.remove {
+            &:hover {
+              background-color: #da1e37;
+            }
+          }
+          &:hover {
+            flex: 1.5;
+          }
+        }
+      }
+    }
+    .todos {
+      .todo {
+      }
+      .action-buttons {
+        .mad {
+          &:hover {
+            background-color: #06d6a0;
+          }
+        }
+        .remove {
+          &:hover {
+            background-color: #da1e37;
+          }
         }
       }
     }

@@ -231,7 +231,7 @@ export default {
               color: #db4437;
             }
             .instagram {
-              color: #c13584;
+              color: #833ab4;
             }
             .twitter {
               color: #1da1f2;
@@ -255,7 +255,7 @@ export default {
               color: #1da1f2;
             }
             .instagram:hover {
-              color: #c13584;
+              color: #405de6;
             }
             .email:hover {
               color: #db4437;
