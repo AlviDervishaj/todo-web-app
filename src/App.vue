@@ -18,7 +18,6 @@ export default {
     // make a call to API to change it's state from sleeping to up
     onMounted(async () => {
       let res = await axios.get(`https://todo-web-api.herokuapp.com/`);
-      console.log(res);
     });
     function closeMenu() {
       // select navbar
