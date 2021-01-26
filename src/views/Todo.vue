@@ -324,10 +324,6 @@ export default {
 @media only screen and (min-width: 920px) {
   #todo-app {
     #todo-form {
-      .heading {
-      }
-      .todo {
-      }
       .actions {
         .button {
           &.add {
@@ -347,8 +343,6 @@ export default {
       }
     }
     .todos {
-      .todo {
-      }
       .action-buttons {
         .mad {
           &:hover {
